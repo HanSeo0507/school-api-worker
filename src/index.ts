@@ -4,7 +4,9 @@ import { indexHandlers } from "./handlers";
 
 const initializeRoutes = (router: Router<Request, IHTTPMethods>) => {
 	router.get("/", indexHandlers.getIndex);
-	router.all("*", () => new HttpException(404, "요청하신 데이터를 찾을 수 없어요"));
+	router.all("*", () => {
+		throw new HttpException(404, "요청하신 데이터를 찾을 수 없어요");
+	});
 };
 
 const handlerError = (error: HttpException): Response => {
@@ -12,7 +14,7 @@ const handlerError = (error: HttpException): Response => {
 	return new Response(JSON.stringify({ status, message }), { status });
 };
 
-addEventListener("fetch", (event) => {
+addEventListener("fetch", (event: FetchEvent) => {
 	const router = Router<Request, IHTTPMethods>();
 	initializeRoutes(router);
 
