@@ -1,0 +1,17 @@
+{
+	"name": "school-api-worker",
+	"version": "0.0.1",
+	"main": "src/index.ts",
+	"repository": "https://github.com/HanSeo0507/school-api-worker.git",
+	"author": "HanSeo0507 <i.hansu.lee@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "wrangler dev",
+		"deploy": "wrangler publish"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^3.13.0",
+		"typescript": "^4.7.4",
+		"wrangler": "^2.0.15"
+	}
+}
