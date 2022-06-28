@@ -1,9 +1,10 @@
 import { IHTTPMethods, Router } from "itty-router";
 import { HttpException } from "src/exceptions";
-import { indexHandlers } from "./handlers";
+import { indexHandlers, mealHandlers } from "./handlers";
 
 const initializeRoutes = (router: Router<Request, IHTTPMethods>) => {
 	router.get("/", indexHandlers.getIndex);
+	router.get("/meals/:schoolName?", mealHandlers.getMeal);
 	router.all("*", () => {
 		throw new HttpException(404, "요청하신 데이터를 찾을 수 없어요");
 	});
