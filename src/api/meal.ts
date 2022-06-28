@@ -11,13 +11,16 @@ export const getMealBySchoolCode = async (officeDistrictCode: string, schoolCode
 		ATPT_OFCDC_SC_CODE: officeDistrictCode,
 		SD_SCHUL_CODE: schoolCode,
 
-		MLSV_YMD: options?.MLSV_YMD || formatDate(new Date(), true),
+		MLSV_YMD: options?.MLSV_YMD || formatDate(new Date().toLocaleString("en", { timeZone: "Asia/Seoul" }), true),
 		MLSV_FROM_YMD: options?.MLSV_FROM_YMD || "",
 		MLSV_TO_YMD: options?.MLSV_TO_YMD || "",
 	});
 
 	const data: {
 		mealServiceDietInfo: NeisAPIResponse<IMeal>;
-	} = await fetch(`${NEIS_API_BASE_URL}/mealServiceDietInfo?` + query, {}).then((res) => res.json());
+	} = await fetch(`${NEIS_API_BASE_URL}/mealServiceDietInfo?` + query, {}).then((res) => {
+		console.log(res.url);
+		return res.json();
+	});
 	return data.mealServiceDietInfo[1].row;
 };
