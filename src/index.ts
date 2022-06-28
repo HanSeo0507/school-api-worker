@@ -1,5 +1,20 @@
-import { handleRequest } from "./handler";
+import { IHTTPMethods, Router } from "itty-router";
+import { HttpException } from "src/exceptions";
+import { indexHandlers } from "./handlers";
+
+const initializeRoutes = (router: Router<Request, IHTTPMethods>) => {
+	router.get("/", indexHandlers.getIndex);
+	router.all("*", () => new HttpException(404, "요청하신 데이터를 찾을 수 없어요"));
+};
+
+const handlerError = (error: HttpException): Response => {
+	const { status = 500, message = "일시적인 오류가 발생했어요" } = error;
+	return new Response(JSON.stringify({ status, message }), { status });
+};
 
 addEventListener("fetch", (event) => {
-	event.respondWith(handleRequest(event.request));
+	const router = Router<Request, IHTTPMethods>();
+	initializeRoutes(router);
+
+	event.respondWith(router.handle(event.request).catch(handlerError));
 });

@@ -4,6 +4,7 @@
 		"lib": ["ES2021"],
 		"moduleResolution": "Node",
 		"types": ["@cloudflare/workers-types"],
+		"baseUrl": ".",
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"checkJs": true,
@@ -12,7 +13,8 @@
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"strictPropertyInitialization": false
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules"]
