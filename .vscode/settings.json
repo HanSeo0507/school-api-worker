@@ -1,0 +1,4 @@
+{
+	"cSpell.ignoreWords": ["itty", "IHTTP", "NEIS", "ATPT_OFCDC", "MLSV", "LCTN", "RDNZC", "RDNMA", "RDNDA", "TELNO", "ADRES", "HMPG", "COEDU", "FAXNO", "INDST", "SPECL", "CCCCL", "EXST", "GNRL", "BUSNS", "SPCLY", "PURPS", "SEHF", "DGHT", "FOAS_MEMRD", "MMEAL", "DDISH", "ORPLC"],
+	"cSpell.ignorePaths": ["package-lock.json", "yarn.lock", "node_modules", "vscode-extension", ".git/objects", ".vscode", ".vscode-insiders"]
+}
